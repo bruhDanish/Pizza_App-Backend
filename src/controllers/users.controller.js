@@ -12,7 +12,7 @@ async function createUser(req, res) {
     try {
         const response = await userService.registerUser(req.body);
 
-        return res.json({
+        return res.status(201).json({
             message: 'User created',
             data: response,
             success: true,
@@ -20,10 +20,10 @@ async function createUser(req, res) {
         });
     } catch (error) {
         return res.status(error.statusCode).json({
-            message: 'User not created',
+            message: 'User not created' + error.reason,
             data: null,
             success: false,
-            error: error.reason
+            error: error
         })
     }    
 
