@@ -1,4 +1,4 @@
-const { findUser, createUser } = require("../respository/user.repo");
+const { findUser, createUser } = require("../repository/user.repo");
 
     async function registerUser(userDetails){
         // this will create a new user in the db

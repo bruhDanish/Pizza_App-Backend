@@ -1,4 +1,4 @@
-const { findUser } = require("../respository/user.repo.js");
+const { findUser } = require("../repository/user.repo.js");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET, JWT_EXPIRY } = require('../config/server.config.js');
