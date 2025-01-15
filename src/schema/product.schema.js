@@ -15,6 +15,11 @@ const productSchema = new mongoose.Schema({
         type: String,
         // required: [true, 'Product image is required']
     },
+    quantity: {
+        type: Number,
+        required: [true, 'Quantity is required'],
+        default: 10
+    },
     price: {
         type: Number,
         required: [true, 'Price is required']
