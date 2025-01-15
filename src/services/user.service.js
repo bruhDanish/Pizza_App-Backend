@@ -1,4 +1,5 @@
-const { findUser, createUser } = require("../repository/user.repo");
+const { findUser, createUser } = require("../repository/user.repo.js");
+const {createCart} = require('../repository/cart.repo.js')
 
     async function registerUser(userDetails){
         // this will create a new user in the db
@@ -8,7 +9,7 @@ const { findUser, createUser } = require("../repository/user.repo");
         })
 
         if(user){
-            throw {reason: "User already exists", statusCode: 400};
+            throw {message: "User already exists", statusCode: 400};
         }
 
         const newUser = await createUser({
@@ -20,8 +21,10 @@ const { findUser, createUser } = require("../repository/user.repo");
         });
 
         if(!newUser){
-            throw {reason: "Couldn't create user, something went wrong", statusCode: 500};
+            throw {message: "Couldn't create user, something went wrong", statusCode: 500};
         };
+
+        await createCart(newUser._id);
 
         return newUser;
     }

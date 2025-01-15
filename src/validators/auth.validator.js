@@ -28,13 +28,13 @@ async function isLoggedIn(req, res, next){
     
         next();
     } catch (error) {
-            return res.status(401).json({
-                message: "Unauthorized, invalid token provided",
-                data: {},
-                success: false,
-                error: "Not authenticated"
-            });
-        }
+        return res.status(401).json({
+            message: "Unauthorized, invalid token provided",
+            data: {},
+            success: false,
+            error: error+" Not authenticated"
+        });
+    }
 }
 
 function isAdmin(req, res, next){
